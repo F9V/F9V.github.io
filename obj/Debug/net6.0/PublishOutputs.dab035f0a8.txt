@@ -1,0 +1,1 @@
+C:\xampp\htdocs\Blazor\MyNewApp\bin\Debug\net6.0\publish\web.config

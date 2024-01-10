@@ -1,0 +1,503 @@
+﻿@page "/parserconfig_detailconfig_json"
+
+@inject HttpClient Http
+@inject ISnackbar Snackbar
+@using MudBlazor
+@using MyNewApp.Shared
+@using System.Text.Json
+@using MudBlazor.Components
+
+<PageTitle>Parser Configuration</PageTitle>
+
+
+<MudGrid class="a_no_spacing">
+        
+    <MudItem xs="6" sm="3">
+        <PC_LeftMenu />
+    </MudItem>
+
+
+    <MudItem xs="6" sm="9">
+        <MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+
+
+
+<MudExpansionPanels MultiExpansion="true">
+    <MudExpansionPanel Text="Contextual levels" IsInitiallyExpanded>
+        <MudGrid>
+            <MudItem xs="3">                
+                <MudSelect T="string" Label="Client" Variant="Variant.Outlined" @bind-SelectedValues="client_options">
+                    @foreach (var client in clients)
+                    {
+                        <MudSelectItem T="string" Value="@client">@client</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="3">                
+                <MudSelect T="string" Label="Division" Variant="Variant.Outlined" @bind-SelectedValues="division_options">
+                    @foreach (var d in divisions)
+                    {
+                        <MudSelectItem T="string" Value="@d">@d</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="3">                
+                <MudSelect T="string" Label="Context" Variant="Variant.Outlined" @bind-SelectedValues="context_options">
+                    @foreach (var c in contexts)
+                    {
+                        <MudSelectItem T="string" Value="@c">@c</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="3">
+                
+                
+            </MudItem>
+
+        </MudGrid>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Information" IsInitiallyExpanded>
+        
+        <div class="Expansion_Panel_Buttons">
+            <MudButton
+                    Target="_blank"
+                    Variant="Variant.Text"
+                    EndIcon="@Icons.Material.Filled.Input"
+                    Color="Color.Secondary"
+                    Style="text-transform:none">
+                    Import
+            </MudButton>
+            <MudButton
+                    Target="_blank"
+                    Variant="Variant.Text"
+                    EndIcon="@Icons.Material.Filled.Output"
+                    Color="Color.Secondary"
+                    Style="text-transform:none">
+                    Export
+            </MudButton>
+        </div>
+        @if (theParser != null)
+        {
+            <MudGrid>
+                <MudItem xs="3">
+                <MudTextField T="string" Text=@theParser[0].ConfigurationName Label="Configuration name" Variant="Variant.Outlined"/>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudTextField T="string" Text=@theParser[0].Id Label="ID" Variant="Variant.Outlined"/>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudTextField T="string" Text=@theParser[0].Version Label="Version" Variant="Variant.Outlined"/>
+                </MudItem>
+                <MudItem xs="3">
+                    
+                </MudItem>
+            </MudGrid>
+            <MudGrid>
+                <MudItem xs="3">
+                    <MudTextField T="string" Text=@theParser[0].CreatedBy Label="Created by" Variant="Variant.Outlined"/>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudTextField T="DateTime" Text=@(theParser[0]?.CreatedOn?.ToString("yyyy-MM-dd HH:mm:ss") ?? "") Label="Created on" Variant="Variant.Outlined"/>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudTextField T="string" Text="George" Label="Modified by" Variant="Variant.Outlined"/>
+                </MudItem>
+                <MudItem xs="3">
+                    <MudTextField T="DateTime" Text=@(theParser[0]?.LastEditOn?.ToString("yyyy-MM-dd HH:mm:ss") ?? "") Label="Modified on" Variant="Variant.Outlined"/>
+                </MudItem>
+            </MudGrid>
+            
+        }
+    </MudExpansionPanel>
+
+
+    <MudExpansionPanel Text="Parser chain" IsInitiallyExpanded>
+        
+        @if (theParser?[0]?.ChainSteps is JsonElement chainSteps)
+        {
+            
+
+            @foreach (var chainStep in chainSteps.EnumerateArray())
+            {
+                <MudExpansionPanel Text="@chainStep.GetProperty("name").GetString()" IsInitiallyExpanded>
+                    <MudGrid>
+                    @foreach (var property in chainStep.EnumerateObject())
+                    {
+                        if (property.Value.ValueKind == JsonValueKind.True || property.Value.ValueKind == JsonValueKind.False)
+                        {
+                            
+                            bool switchValue = property.Value.GetBoolean();
+                            <MudItem xs="3">
+                                <MudSwitch  onclick="() => OnStatusChanged()" Checked="@switchValue" Label="@property.Name" Color="Color.Primary" />
+                            </MudItem>
+                        }
+                        else
+                        {
+                            <MudItem xs="3">
+                                <MudTextField T="string" Text="@property.Value.ToString()" Label="@property.Name" Variant="Variant.Outlined" />
+                            </MudItem>
+                        }
+                    }
+                    </MudGrid>
+                </MudExpansionPanel>
+            }
+        }
+
+        
+
+
+
+    </MudExpansionPanel>
+
+
+
+    <MudExpansionPanel Text="File extensions" IsInitiallyExpanded>
+        @foreach (var extension in extensionList)
+        {
+            <MudChip Label="true" Variant="Variant.Text" Color="Color.Secondary">@extension</MudChip>
+        }
+        <div>
+            <MudTextField @bind-Value="newExtension" Label="New Extension"></MudTextField>
+            <MudButton class="a_margin-top" OnClick="AddNewExtension" Variant="Variant.Filled">Add extension</MudButton>
+        </div>
+    </MudExpansionPanel>
+
+
+    <MudExpansionPanel Text="Files management" IsInitiallyExpanded>
+        
+        <MudStack Style="width: 100%">
+            <MudFileUpload T="IReadOnlyList<IBrowserFile>"
+                        AppendMultipleFiles
+                        OnFilesChanged="OnInputFileChanged"
+                        Hidden="@false"
+                        InputClass="absolute mud-width-full mud-height-full overflow-hidden z-20"
+                        InputStyle="opacity:0"
+                        @ondragenter="@SetDragClass"
+                        @ondragleave="@ClearDragClass"
+                        @ondragend="@ClearDragClass">
+                <ButtonTemplate>
+                    <MudPaper Height="300px"
+                            Outlined="true"
+                            Class="@_dragClass">
+                        <MudText Typo="Typo.h6">
+                            Drag and drop files here or click
+                        </MudText>
+                        @foreach (var file in _fileNames)
+                        {
+                            <MudChip Color="Color.Dark" Text="@file" />
+                        }
+                    </MudPaper>
+                    <MudToolBar DisableGutters="true"
+                                Class="relative d-flex justify-end gap-4 z-30">
+                        <MudButton HtmlTag="label"
+                                Color="Color.Primary"
+                                for="@context"
+                                Variant="Variant.Filled">
+                            Open file picker
+                        </MudButton>
+                        <MudButton OnClick="@Upload"
+                                Color="Color.Primary"
+                                Disabled="@(!_fileNames.Any())"
+                                Variant="Variant.Filled">
+                            Upload
+                        </MudButton>
+                        <MudButton OnClick="@Clear"
+                                Color="Color.Error"
+                                Disabled="@(!_fileNames.Any())"
+                                Variant="Variant.Filled">
+                            Clear
+                        </MudButton>
+                    </MudToolBar>
+                </ButtonTemplate>
+            </MudFileUpload>
+        </MudStack>
+    
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Labels" IsInitiallyExpanded>
+        @foreach (var label in labelList)
+        {
+            <MudChip Label="true" Variant="Variant.Text" Color="Color.Secondary">@label</MudChip>
+        }
+        <div>
+            <MudTextField @bind-Value="newLabel" Label="New Label"></MudTextField>
+            <MudButton class="a_margin-top" OnClick="AddNewLabel" Variant="Variant.Filled">Add label</MudButton>
+        </div>
+    </MudExpansionPanel>
+
+
+</MudExpansionPanels>
+
+
+    <MudGrid class="a_no_spacing">
+        <MudItem xs="12" Class="d-flex justify-space-between flex-grow-1 gap-4">
+            <MudButton Variant="Variant.Filled" Color="Color.Tertiary">Cancel</MudButton>
+
+        
+            <MudButton Variant="Variant.Filled" Color="Color.Primary">Save changes</MudButton>
+
+        </MudItem>
+    </MudGrid>
+    </MudItem>
+
+</MudGrid>
+
+
+
+
+@code {
+    public int spacing { get; set; } = 0;
+}
+
+<!-- Left menu code -->
+
+
+@code {
+    string? SelectedValue { get; set; }
+    bool folder1;
+    bool folder2 = true;
+    bool folder2_1;
+    bool folder2_2 = true;
+    bool folder2_3;
+    bool folder2_3_1 = true;
+    bool folder3;
+    bool folder4;
+    bool folder5;
+    bool folder6;
+}
+
+<!-- Extensions code -->
+
+
+@code {
+    List<string> extensionList = new List<string> { ".xls (primary)", ".xlsx" };
+    string newExtension = "";
+
+    void AddNewExtension()
+    {
+        if (!string.IsNullOrWhiteSpace(newExtension))
+        {
+            extensionList.Add(newExtension);
+            newExtension = ""; // Clear the input field
+        }
+    }
+}
+
+
+
+<!-- Labels code -->
+
+@code {
+    List<string> labelList = new List<string> { "cisco", "finance" };
+    string newLabel = "";
+
+    void AddNewLabel()
+    {
+        if (!string.IsNullOrWhiteSpace(newLabel))
+        {
+            labelList.Add(newLabel);
+            newLabel = ""; // Clear the input field
+        }
+    }
+}
+
+
+@code {
+    private void ItemUpdated(MudItemDropInfo<DropItem> dropItem)
+    {
+        if (dropItem.Item != null)
+        {
+            dropItem.Item.Selector = dropItem.DropzoneIdentifier;
+        }
+    }
+
+    private List<DropItem> _ditems = new()
+    {
+        new DropItem(){ Name = "Base", Selector = "1", Sector = "General" },
+        new DropItem(){ Name = "DFG P", Selector = "2", Sector = "General" },
+        new DropItem(){ Name = "Segments_def", Selector = "2", Sector = "General" },
+        new DropItem(){ Name = "Rebuild_segments 2.1.2", Selector = "2", Sector = "General" },
+        new DropItem(){ Name = "Xliff parser", Selector = "5", Sector = "Utility" },
+        new DropItem(){ Name = "Xliff parser 2.0", Selector = "5", Sector = "Utility" },
+        new DropItem(){ Name = "Trends AI parser", Selector = "3", Sector = "AI_parsers" },
+        new DropItem(){ Name = "Chat GPT-3.5 AI parser", Selector = "3", Sector = "AI_parsers" },
+        new DropItem(){ Name = "Chat GPT-4.0 AI parser", Selector = "3", Sector = "AI_parsers" },
+        new DropItem(){ Name = "TFG parser", Selector = "3", Sector = "AI_parsers" },
+        new DropItem(){ Name = "MS Word", Selector = "4", Sector = "Office" },
+        new DropItem(){ Name = "MS Excel", Selector = "4", Sector = "Office" },
+        new DropItem()
+        {
+            Name = "MS Powerpoint",
+            Selector = "4",
+            Sector = "Office",
+        },
+    };
+    
+    
+    public class DropItem
+    {
+        public string? Name { get; init; }
+        public string? Selector { get; set; }
+        public string? Sector { get; set; }
+
+    }
+
+}
+
+
+@code {
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("Cisco", href: "#"),
+        new BreadcrumbItem("Letters", href: "#"),
+        new BreadcrumbItem("TDP", href: "#"),
+        new BreadcrumbItem("Office", href: null, disabled: true)
+    };
+
+    private string value { get; set; } = "Nothing selected";
+
+    private IEnumerable<string> client_options { get; set; } = new HashSet<string>() { "Cisco" };
+    private string[] clients =
+    {
+        "Accenture", "Amazon", "AMD", "American arilines", "American Express", "Apple", "Cisco", "Coca cola", "Deloitte", "Google", "Microsoft", "nVidia" ,"Oscorp", "Pepsi", "Revolut", "Sasmung", "Zendesk",
+    };
+
+    private IEnumerable<string> division_options { get; set; } = new HashSet<string>() { "Office" };
+    private string[] divisions =
+    {
+        "Communication", "Finance", "HR" , "Marketing", "Office", "Production",
+    };
+
+    private IEnumerable<string> context_options { get; set; } = new HashSet<string>() { "TDP" };
+    private string[] contexts =
+    {
+        "Letters", "TDP",
+    };
+}
+
+
+<!-- Files management -->
+
+@code {
+#nullable enable
+    private const string DefaultDragClass = "relative rounded-lg border-2 border-dashed pa-4 mt-4 mud-width-full mud-height-full z-10";
+    private string _dragClass = DefaultDragClass;
+    private readonly List<string> _fileNames = new();
+
+    private async Task Clear()
+    {
+        _fileNames.Clear();
+        ClearDragClass();
+        await Task.Delay(100);
+    }
+
+    private void OnInputFileChanged(InputFileChangeEventArgs e)
+    {
+        ClearDragClass();
+        var files = e.GetMultipleFiles();
+        foreach (var file in files)
+        {
+            _fileNames.Add(file.Name);
+        }
+    }
+
+    private void Upload()
+    {
+        // Upload the files here
+        Snackbar.Configuration.PositionClass = Defaults.Classes.Position.TopCenter;
+        Snackbar.Add("TODO: Upload your files!");
+    }
+
+    private void SetDragClass()
+        => _dragClass = $"{DefaultDragClass} mud-border-primary";
+
+    private void ClearDragClass()
+        => _dragClass = DefaultDragClass;
+}
+
+
+
+<!-- Fetch data from configuration file -->
+
+@code {
+    private ParserConfig[]? theParser;
+    protected override async Task OnInitializedAsync()
+    {
+        theParser = await Http.GetFromJsonAsync<ParserConfig[]>("sample-data/sample_json_Cisco_cc_config.json");
+    }
+    public class ParserConfig
+    {
+        public DateTime Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string? ConfigurationName { get; set; }
+        public string? Id { get; set; }
+        public string? Version { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public string? CreatedBy { get; set; }
+        public DateTime? LastEditOn { get; set; }
+        public string? LastEditBy { get; set; }
+            
+        public JsonElement? ChainSteps { get; set; }
+    }
+}
+
+<!-- Alert messages -->
+@code
+{
+    [Inject] private IDialogService? DialogService { get; set; }
+
+    string state = "Message box hasn't been opened yet";
+
+    private async void OnStatusChanged()
+    {
+        if (DialogService != null)
+        {
+            bool? result = await DialogService.ShowMessageBox(
+                "Secure The Ring", 
+                (MarkupString) $"You <br /> Shall <br /> not <br /> <b>Pass!<b/>",
+                yesText: "Fire Whip!", cancelText: "Smash Ground");
+
+            state = result == null ? "Returned to Moria" : "Fighting With Gandalf!";
+            StateHasChanged();
+        }
+    }
+}
+
+
+
+<!-- Search bar -->
+
+@code {
+    private bool resetValueOnEmptyText;
+    private bool coerceText;
+    private bool coerceValue;
+    private string? value1, value2;
+    private string[] a_customers =
+    {
+        "Microsoft", "Cisco", "Google", "Apple", "Accenture", "Samsung", "HP", "Adobe", "Autodesk", "X", "Marvell",
+    };
+
+    private async Task<IEnumerable<string>> Search1(string value)
+    {
+        // In real life use an asynchronous function for fetching data from an api.
+        await Task.Delay(5);
+
+        // if text is null or empty, show complete list
+        if (string.IsNullOrEmpty(value))
+            return a_customers;
+        return a_customers.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+    }
+
+    private async Task<IEnumerable<string>> Search2(string value)
+    {
+        // In real life use an asynchronous function for fetching data from an api.
+        await Task.Delay(5);
+
+        // if text is null or empty, don't return values (drop-down will not open)
+        if (string.IsNullOrEmpty(value))
+            return new string[0];
+        return a_customers.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+    }
+}

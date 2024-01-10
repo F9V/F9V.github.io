@@ -1,0 +1,171 @@
+﻿@page "/parserconfigcards"
+@using MudBlazor
+
+<PageTitle>ParserConfig</PageTitle>
+
+
+
+<MudGrid>
+    <MudItem xs="6" sm="3">
+
+        <MudPaper Elevation="0">
+            <MudTreeView @bind-SelectedValue="SelectedValue" Hover="true">
+                <MudTreeViewItem @bind-Expanded="@folder1" Value='@("Accenture")' Icon="@(folder1 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder2" Value='@("Cisco")' Icon="@(folder2 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem @bind-Expanded="@folder2_1" Value='@("Central")' Icon="@(folder2_1 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+
+                    </MudTreeViewItem>
+                    <MudTreeViewItem @bind-Expanded="@folder2_2" Value='@("Letters")' Icon="@(folder2_2 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                        <MudTreeViewItem @bind-Expanded="@folder2_2_1" Value='@("Finance")' Icon="@(folder2_2_1 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                            <MudTreeViewItem Value='@("config.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                        </MudTreeViewItem>
+                        <MudTreeViewItem @bind-Expanded="@folder2_2_2" Value='@("Office")' Icon="@(folder2_2_2 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                            <MudTreeViewItem @bind-Expanded="@folder2_2_2_1" Value='@("TDP")' Icon="@(folder2_2_2_1 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                                <MudTreeViewItem Value='@("Cisco_cc.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                                <MudTreeViewItem Value='@("Cisco_ted.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                                <MudTreeViewItem Value='@("Cisco_stand-02.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                            </MudTreeViewItem>
+                        </MudTreeViewItem>
+                    </MudTreeViewItem>
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder3" Value='@("Deloitte")' Icon="@(folder3 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder4" Value='@("HP")' Icon="@(folder4 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder5" Value='@("Microsoft")' Icon="@(folder5 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder6" Value='@("Samsung")' Icon="@(folder6 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+            </MudTreeView>
+        </MudPaper>
+
+    </MudItem>
+    <MudItem xs="6" sm="9">
+
+
+        <MudGrid>
+            <MudItem xs="12" sm="4">
+                <MudPaper class="a_card">
+                    <h4>Cisco_cc</h4>
+                    <MudGrid class="a_card_data">
+                        <MudItem xs="12" sm="6">
+                            <label>Created</label>
+                            <p>Feb 21, 2020</p>
+                        </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <label>Created by</label>
+                            <p>John Wick</p>
+                        </MudItem>
+                    </MudGrid>
+                    <MudGrid class="a_card_data">
+                        <MudItem xs="12" sm="6">
+                            <label>ID</label>
+                            <p>ree523eeda0</p>
+                        </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <label>Version</label>
+                            <p>1.0.1</p>
+                        </MudItem>
+                    </MudGrid>
+                </MudPaper>
+            </MudItem><MudItem xs="12" sm="4">
+                <MudPaper class="a_card">
+                    <h4>Cisco_ted</h4>
+                    <MudGrid class="a_card_data">
+                        <MudItem xs="12" sm="6">
+                            <label>Created</label>
+                            <p>Feb 06, 2020</p>
+                        </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <label>Created by</label>
+                            <p>John Wick</p>
+                        </MudItem>
+                    </MudGrid>
+                    <MudGrid class="a_card_data">
+                        <MudItem xs="12" sm="6">
+                            <label>ID</label>
+                            <p>trhe4r23we</p>
+                        </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <label>Version</label>
+                            <p>1.2.1</p>
+                        </MudItem>
+                    </MudGrid>
+                </MudPaper>
+            </MudItem><MudItem xs="12" sm="4">
+                <MudPaper class="a_card">
+                    <h4>Cisco_stand-02</h4>
+                    <MudGrid class="a_card_data">
+                        <MudItem xs="12" sm="6">
+                            <label>Created</label>
+                            <p>Feb 11, 2021</p>
+                        </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <label>Created by</label>
+                            <p>John Wick</p>
+                        </MudItem>
+                    </MudGrid>
+                    <MudGrid class="a_card_data">
+                        <MudItem xs="12" sm="6">
+                            <label>ID</label>
+                            <p>wefreggr23</p>
+                        </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <label>Version</label>
+                            <p>1.0.2</p>
+                        </MudItem>
+                    </MudGrid>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+
+    </MudItem>
+</MudGrid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@code {
+    public int spacing { get; set; } = 1;
+}
+
+
+@code {
+    string? SelectedValue { get; set; }
+    bool folder1;
+    bool folder2 = true;
+    bool folder2_1;
+    bool folder2_2 = true;
+    bool folder2_2_1;
+    bool folder2_2_2 = true;
+    bool folder2_2_2_1 = true;
+    bool folder3;
+    bool folder4;
+    bool folder5;
+    bool folder6;
+}

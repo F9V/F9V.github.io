@@ -1,0 +1,442 @@
+@page "/parserconfig_detailconfig_xml"
+@using MudBlazor
+@inject ISnackbar Snackbar
+
+<PageTitle>ParserConfig</PageTitle>
+
+
+
+<MudGrid>
+    <MudItem xs="6" sm="3">
+
+        <MudPaper Elevation="0">
+            <MudTreeView @bind-SelectedValue="SelectedValue" Hover="true">
+                <MudTreeViewItem @bind-Expanded="@folder1" Value='@("Accenture")' Icon="@(folder1 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder2" Value='@("Cisco")' Icon="@(folder2 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                <MudTreeViewItem @bind-Expanded="@folder2_1" Value='@("Central")' Icon="@(folder2_1 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder2_2" Value='@("Finance")' Icon="@(folder2_2 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("config.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder2_3" Value='@("Office")' Icon="@(folder2_3 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem @bind-Expanded="@folder2_3_1" Value='@("TDP")' Icon="@(folder2_3_1 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                        <MudTreeViewItem Value='@("Cisco_cc.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                        <MudTreeViewItem Value='@("Cisco_ted.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                        <MudTreeViewItem Value='@("Cisco_stand-02.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    </MudTreeViewItem>
+                </MudTreeViewItem>
+
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder3" Value='@("Deloitte")' Icon="@(folder3 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder4" Value='@("HP")' Icon="@(folder4 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder5" Value='@("Microsoft")' Icon="@(folder5 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+                <MudTreeViewItem @bind-Expanded="@folder6" Value='@("Samsung")' Icon="@(folder6 ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    <MudTreeViewItem Value='@("main.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                    <MudTreeViewItem Value='@("old_conf.json")' Icon="@Icons.Custom.FileFormats.FileCode" />
+                </MudTreeViewItem>
+            </MudTreeView>
+        </MudPaper>
+
+    </MudItem>
+    <MudItem xs="6" sm="9">
+
+<MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+
+
+
+<MudExpansionPanels MultiExpansion="true">
+    <MudExpansionPanel Text="Contextual levels" IsInitiallyExpanded>
+        <MudGrid>
+            <MudItem xs="3">                
+                <MudSelect T="string" Label="Client" Variant="Variant.Outlined" @bind-SelectedValues="client_options">
+                    @foreach (var client in clients)
+                    {
+                        <MudSelectItem T="string" Value="@client">@client</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="3">                
+                <MudSelect T="string" Label="Division" Variant="Variant.Outlined" @bind-SelectedValues="division_options">
+                    @foreach (var d in divisions)
+                    {
+                        <MudSelectItem T="string" Value="@d">@d</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="3">                
+                <MudSelect T="string" Label="Context" Variant="Variant.Outlined" @bind-SelectedValues="context_options">
+                    @foreach (var c in contexts)
+                    {
+                        <MudSelectItem T="string" Value="@c">@c</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="3">
+                
+                
+            </MudItem>
+
+        </MudGrid>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Information" IsInitiallyExpanded>
+        
+        <div class="Expansion_Panel_Buttons">
+            <MudButton
+                    Target="_blank"
+                    Variant="Variant.Text"
+                    EndIcon="@Icons.Material.Filled.Input"
+                    Color="Color.Secondary"
+                    Style="text-transform:none">
+                    Import
+            </MudButton>
+            <MudButton
+                    Target="_blank"
+                    Variant="Variant.Text"
+                    EndIcon="@Icons.Material.Filled.Output"
+                    Color="Color.Secondary"
+                    Style="text-transform:none">
+                    Export
+            </MudButton>
+        </div>
+        <MudGrid>
+            <MudItem xs="3">
+                <MudTextField T="string" Text="Cisco_cc" Label="Configuration name" Variant="Variant.Outlined"/>
+            </MudItem>
+            <MudItem xs="3">
+                <MudTextField T="string" Text="6dfg32g325" Label="ID" Variant="Variant.Outlined"/>
+            </MudItem>
+            <MudItem xs="3">
+                <MudTextField T="string" Text="1.2.2" Label="Version" Variant="Variant.Outlined"/>
+            </MudItem>
+            <MudItem xs="3">
+                Test
+            </MudItem>
+        </MudGrid>
+        <MudGrid>
+            <MudItem xs="3">
+                <MudTextField T="string" Text="Cisco_cc" Label="Created by" Variant="Variant.Outlined"/>
+            </MudItem>
+            <MudItem xs="3">
+                <MudTextField T="string" Text="Feb 20, 2020" Label="Created on" Variant="Variant.Outlined"/>
+            </MudItem>
+            <MudItem xs="3">
+                <MudTextField T="string" Text="George" Label="Modified by" Variant="Variant.Outlined"/>
+            </MudItem>
+            <MudItem xs="3">
+                <MudTextField T="string" Text="Feb 21, 2020" Label="Modified on" Variant="Variant.Outlined"/>
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+
+
+    <MudExpansionPanel Text="Parser chain" IsInitiallyExpanded>
+        
+        <MudDropContainer T="DropItem" Items="_ditems" ItemsSelector="@((item,dropzone) => item.Selector == dropzone)" ItemDropped="ItemUpdated" Class="d-flex flex-wrap flex-grow-1">
+            <ChildContent>
+
+                    <MudPaper Class="ma-4 flex-grow-1">
+                        <MudList Clickable="true" Class="d-flex flex-column mud-height-full">
+                            <MudListSubheader>Drop Zone 1</MudListSubheader>
+                            <MudDropZone T="DropItem" Identifier="1" Class="flex-grow-1" />
+                        </MudList>
+                    </MudPaper>
+                    <MudPaper Class="ma-4 flex-grow-1">
+                        
+                        <MudList Clickable="true" Class="d-flex flex-column mud-height-full">
+                            <MudListSubheader>Steps available</MudListSubheader>
+
+                            <MudExpansionPanel Text="General" IsInitiallyExpanded class="a_small_ext_panels a_dz_main_2">
+                                <MudDropZone T="DropItem" Identifier="2" CanDrop='@((item) => item.Sector == "General")' />
+                            </MudExpansionPanel>
+
+                            <MudExpansionPanel Text="AI Parsers" class="a_small_ext_panels a_dz_main_3">
+                                <MudDropZone T="DropItem" Identifier="3" CanDrop='@((item) => item.Sector == "AI_Parsers")' />
+                            </MudExpansionPanel>
+                            <MudExpansionPanel Text="Office" class="a_small_ext_panels a_dz_main_4">
+                                <MudDropZone T="DropItem" Identifier="4" CanDrop='@((item) => item.Sector == "Office")' />
+                            </MudExpansionPanel>
+                            <MudExpansionPanel Text="Utility" class="a_small_ext_panels a_dz_main_5">
+                                <MudDropZone T="DropItem" Identifier="5" CanDrop='@((item) => item.Sector == "Utility")' />
+                            </MudExpansionPanel>
+                        </MudList>
+                    </MudPaper>
+
+
+            </ChildContent>
+            <ItemRenderer>
+                <MudListItem Text="@context.Name" class="@context.Sector"/>
+            </ItemRenderer>
+        </MudDropContainer>
+
+
+    </MudExpansionPanel>
+
+
+
+    <MudExpansionPanel Text="File extensions" IsInitiallyExpanded>
+        @foreach (var extension in extensionList)
+        {
+            <MudChip Label="true" Variant="Variant.Text" Color="Color.Secondary">@extension</MudChip>
+        }
+        <div>
+            <MudTextField @bind-Value="newExtension" Label="New Extension"></MudTextField>
+            <MudButton class="a_margin-top" OnClick="AddNewExtension" Variant="Variant.Filled">Add extension</MudButton>
+        </div>
+    </MudExpansionPanel>
+
+
+    <MudExpansionPanel Text="Files management" IsInitiallyExpanded>
+        
+        <MudStack Style="width: 100%">
+            <MudFileUpload T="IReadOnlyList<IBrowserFile>"
+                        AppendMultipleFiles
+                        OnFilesChanged="OnInputFileChanged"
+                        Hidden="@false"
+                        InputClass="absolute mud-width-full mud-height-full overflow-hidden z-20"
+                        InputStyle="opacity:0"
+                        @ondragenter="@SetDragClass"
+                        @ondragleave="@ClearDragClass"
+                        @ondragend="@ClearDragClass">
+                <ButtonTemplate>
+                    <MudPaper Height="300px"
+                            Outlined="true"
+                            Class="@_dragClass">
+                        <MudText Typo="Typo.h6">
+                            Drag and drop files here or click
+                        </MudText>
+                        @foreach (var file in _fileNames)
+                        {
+                            <MudChip Color="Color.Dark" Text="@file" />
+                        }
+                    </MudPaper>
+                    <MudToolBar DisableGutters="true"
+                                Class="relative d-flex justify-end gap-4 z-30">
+                        <MudButton HtmlTag="label"
+                                Color="Color.Primary"
+                                for="@context"
+                                Variant="Variant.Filled">
+                            Open file picker
+                        </MudButton>
+                        <MudButton OnClick="@Upload"
+                                Color="Color.Primary"
+                                Disabled="@(!_fileNames.Any())"
+                                Variant="Variant.Filled">
+                            Upload
+                        </MudButton>
+                        <MudButton OnClick="@Clear"
+                                Color="Color.Error"
+                                Disabled="@(!_fileNames.Any())"
+                                Variant="Variant.Filled">
+                            Clear
+                        </MudButton>
+                    </MudToolBar>
+                </ButtonTemplate>
+            </MudFileUpload>
+        </MudStack>
+    
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Labels" IsInitiallyExpanded>
+        @foreach (var label in labelList)
+        {
+            <MudChip Label="true" Variant="Variant.Text" Color="Color.Secondary">@label</MudChip>
+        }
+        <div>
+            <MudTextField @bind-Value="newLabel" Label="New Label"></MudTextField>
+            <MudButton class="a_margin-top" OnClick="AddNewLabel" Variant="Variant.Filled">Add label</MudButton>
+        </div>
+    </MudExpansionPanel>
+
+
+</MudExpansionPanels>
+
+
+    </MudItem>
+
+</MudGrid>
+
+
+
+
+@code {
+    public int spacing { get; set; } = 1;
+}
+
+<!-- Left menu code -->
+
+
+@code {
+    string? SelectedValue { get; set; }
+    bool folder1;
+    bool folder2 = true;
+    bool folder2_1;
+    bool folder2_2 = true;
+    bool folder2_3;
+    bool folder2_3_1 = true;
+    bool folder3;
+    bool folder4;
+    bool folder5;
+    bool folder6;
+}
+
+<!-- Extensions code -->
+
+
+@code {
+    List<string> extensionList = new List<string> { ".xls (primary)", ".xlsx" };
+    string newExtension = "";
+
+    void AddNewExtension()
+    {
+        if (!string.IsNullOrWhiteSpace(newExtension))
+        {
+            extensionList.Add(newExtension);
+            newExtension = ""; // Clear the input field
+        }
+    }
+}
+
+<!-- Labels code -->
+
+@code {
+    List<string> labelList = new List<string> { "cisco", "finance" };
+    string newLabel = "";
+
+    void AddNewLabel()
+    {
+        if (!string.IsNullOrWhiteSpace(newLabel))
+        {
+            labelList.Add(newLabel);
+            newLabel = ""; // Clear the input field
+        }
+    }
+}
+
+
+@code {
+    private void ItemUpdated(MudItemDropInfo<DropItem> dropItem)
+    {
+        if (dropItem.Item != null)
+        {
+            dropItem.Item.Selector = dropItem.DropzoneIdentifier;
+        }
+    }
+
+    private List<DropItem> _ditems = new()
+    {
+        new DropItem(){ Name = "Base", Selector = "1", Sector = "General" },
+        new DropItem(){ Name = "DFG P", Selector = "2", Sector = "General" },
+        new DropItem(){ Name = "Segments_def", Selector = "2", Sector = "General" },
+        new DropItem(){ Name = "Rebuild_segments 2.1.2", Selector = "2", Sector = "General" },
+        new DropItem(){ Name = "Xliff parser", Selector = "5", Sector = "Utility" },
+        new DropItem(){ Name = "Xliff parser 2.0", Selector = "5", Sector = "Utility" },
+        new DropItem(){ Name = "Trends AI parser", Selector = "3", Sector = "AI_parsers" },
+        new DropItem(){ Name = "Chat GPT-3.5 AI parser", Selector = "3", Sector = "AI_parsers" },
+        new DropItem(){ Name = "Chat GPT-4.0 AI parser", Selector = "3", Sector = "AI_parsers" },
+        new DropItem(){ Name = "TFG parser", Selector = "3", Sector = "AI_parsers" },
+        new DropItem(){ Name = "MS Word", Selector = "4", Sector = "Office" },
+        new DropItem(){ Name = "MS Excel", Selector = "4", Sector = "Office" },
+        new DropItem()
+        {
+            Name = "MS Powerpoint",
+            Selector = "4",
+            Sector = "Office",
+        },
+    };
+    
+    
+    public class DropItem
+    {
+        public string? Name { get; init; }
+        public string? Selector { get; set; }
+        public string? Sector { get; set; }
+
+    }
+
+}
+
+
+@code {
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("Cisco", href: "#"),
+        new BreadcrumbItem("Letters", href: "#"),
+        new BreadcrumbItem("TDP", href: "#"),
+        new BreadcrumbItem("Office", href: null, disabled: true)
+    };
+
+    private string value { get; set; } = "Nothing selected";
+
+    private IEnumerable<string> client_options { get; set; } = new HashSet<string>() { "Cisco" };
+    private string[] clients =
+    {
+        "Accenture", "Amazon", "AMD", "American arilines", "American Express", "Apple", "Cisco", "Coca cola", "Deloitte", "Google", "Microsoft", "nVidia" ,"Oscorp", "Pepsi", "Revolut", "Sasmung", "Zendesk",
+    };
+
+    private IEnumerable<string> division_options { get; set; } = new HashSet<string>() { "Office" };
+    private string[] divisions =
+    {
+        "Communication", "Finance", "HR" , "Marketing", "Office", "Production",
+    };
+
+    private IEnumerable<string> context_options { get; set; } = new HashSet<string>() { "TDP" };
+    private string[] contexts =
+    {
+        "Letters", "TDP",
+    };
+}
+
+
+<!-- Files management -->
+
+@code {
+#nullable enable
+    private const string DefaultDragClass = "relative rounded-lg border-2 border-dashed pa-4 mt-4 mud-width-full mud-height-full z-10";
+    private string _dragClass = DefaultDragClass;
+    private readonly List<string> _fileNames = new();
+
+    private async Task Clear()
+    {
+        _fileNames.Clear();
+        ClearDragClass();
+        await Task.Delay(100);
+    }
+
+    private void OnInputFileChanged(InputFileChangeEventArgs e)
+    {
+        ClearDragClass();
+        var files = e.GetMultipleFiles();
+        foreach (var file in files)
+        {
+            _fileNames.Add(file.Name);
+        }
+    }
+
+    private void Upload()
+    {
+        // Upload the files here
+        Snackbar.Configuration.PositionClass = Defaults.Classes.Position.TopCenter;
+        Snackbar.Add("TODO: Upload your files!");
+    }
+
+    private void SetDragClass()
+        => _dragClass = $"{DefaultDragClass} mud-border-primary";
+
+    private void ClearDragClass()
+        => _dragClass = DefaultDragClass;
+}
+
+

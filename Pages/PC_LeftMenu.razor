@@ -1,0 +1,117 @@
+@page "/PC_LeftMenu"
+
+@using MudBlazor
+@using System.Text.Json
+
+@inject HttpClient Http
+@using MyNewApp.Shared
+
+
+<MudAutocomplete class="a_main_search" T="string" Label="Search and filter" @bind-Value="value2" SearchFunc="@Search2"
+                    ResetValueOnEmptyText="@resetValueOnEmptyText"
+                    CoerceText="@coerceText" CoerceValue="@coerceValue"
+                    AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
+
+
+<MudExpansionPanel Text="Parser explorer" IsInitiallyExpanded class="a_menu_left">
+    <MudPaper Elevation="0">
+        <MudTreeView @bind-SelectedValue="SelectedValue" Hover="true">
+            @foreach (var group in Configurations.GroupBy(c => c.ParserGroupName))
+            {
+                var groupName = group.Key;
+                var configurations = group.ToList();
+
+                <MudTreeViewItem Expanded="@IsFolderExpanded(groupName!)" OnToggle="() => ToggleFolderExpansion(groupName)" Value="@groupName" Icon="@(IsFolderExpanded(groupName!) ? Icons.Custom.Uncategorized.FolderOpen : Icons.Custom.Uncategorized.Folder)">
+                    @foreach (var configuration in configurations)
+                    {
+                        <MudTreeViewItem Value="@($"{configuration.ConfigurationName}")" Icon="@Icons.Custom.FileFormats.FileCode" />
+                    }
+                </MudTreeViewItem>
+
+            }
+        </MudTreeView>
+    </MudPaper>
+</MudExpansionPanel>
+
+@code {
+
+    public class ConfigurationModel
+    {
+        public string? ConfigurationName { get; set; }
+        public string? ParserGroupID { get; set; }
+        public string? ParserGroupName { get; set; }
+        public string? Id { get; set; }
+        public string? Version { get; set; }
+        public List<string>? Labels { get; set; }
+    }
+
+    string? SelectedValue { get; set; }
+    Dictionary<string, bool> expandedFolders = new Dictionary<string, bool>();
+
+    // Replace this with the actual path to your JSON file
+    string jsonFilePath = "sample-data/sample_json_Cisco_cc_config.json";
+
+    List<ConfigurationModel> Configurations { get; set; } = new List<ConfigurationModel>();
+
+    // Initialize your configurations when the component is initialized
+    protected override async Task OnInitializedAsync()
+    {
+        Configurations = await Http.GetFromJsonAsync<List<ConfigurationModel>>(jsonFilePath) ?? new List<ConfigurationModel>();
+        Console.WriteLine($"Numero di configurazioni: {Configurations.Count}");
+    }
+
+    // Check if a folder is expanded
+    private bool IsFolderExpanded(string groupName)
+    {
+        return expandedFolders.TryGetValue(groupName, out var expanded) && expanded;
+    }
+
+    // Toggle folder expansion state
+    private void ToggleFolderExpansion(string groupName)
+    {
+        if (expandedFolders.ContainsKey(groupName))
+        {
+            expandedFolders[groupName] = !expandedFolders[groupName];
+        }
+        else
+        {
+            expandedFolders[groupName] = true;
+        }
+    }
+}
+
+<!-- Search bar -->
+
+@code {
+    private bool resetValueOnEmptyText;
+    private bool coerceText;
+    private bool coerceValue;
+    private string? value1, value2;
+    private string[] a_customers =
+    {
+        "Microsoft", "Cisco", "Google", "Apple", "Accenture", "Samsung", "HP", "Adobe", "Autodesk", "X", "Marvell",
+    };
+
+    private async Task<IEnumerable<string>> Search1(string value)
+    {
+        // In real life use an asynchronous function for fetching data from an api.
+        await Task.Delay(5);
+
+        // if text is null or empty, show complete list
+        if (string.IsNullOrEmpty(value))
+            return a_customers;
+        return a_customers.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+    }
+
+    private async Task<IEnumerable<string>> Search2(string value)
+    {
+        // In real life use an asynchronous function for fetching data from an api.
+        await Task.Delay(5);
+
+        // if text is null or empty, don't return values (drop-down will not open)
+        if (string.IsNullOrEmpty(value))
+            return new string[0];
+        return a_customers.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+    }
+}
+
