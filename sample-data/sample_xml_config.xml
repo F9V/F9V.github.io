@@ -1,0 +1,2042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ParserChain xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Sajan.IO.Parsers">
+	<AssociationID>00000000-0000-0000-0000-000000000000</AssociationID>
+	<ChainExtensions>
+		<ParserChainFileExtension>
+			<ChainExtension>xlsx</ChainExtension>
+			<IsDefault>true</IsDefault>
+		</ParserChainFileExtension>
+		<ParserChainFileExtension>
+			<ChainExtension>xls</ChainExtension>
+			<IsDefault>true</IsDefault>
+		</ParserChainFileExtension>
+		<ParserChainFileExtension>
+			<ChainExtension>xlsm</ChainExtension>
+			<IsDefault>false</IsDefault>
+		</ParserChainFileExtension>
+		<ParserChainFileExtension>
+			<ChainExtension>xlsb</ChainExtension>
+			<IsDefault>true</IsDefault>
+		</ParserChainFileExtension>
+	</ChainExtensions>
+	<Comments>with HTML tag blocking</Comments>
+	<CreateDate>2015-05-28T13:51:33.06</CreateDate>
+	<CreatedBy>csnow</CreatedBy>
+	<Elements>
+		<ParserChainElement>
+			<ChainID>1705</ChainID>
+			<Configuration i:type="XlsxParserConfig">
+				<AssociationID>00000000-0000-0000-0000-000000000000</AssociationID>
+				<ID>7379</ID>
+				<LastUpdated>2023-11-08T11:09:40.043</LastUpdated>
+				<Name>System Default Excel Parser</Name>
+				<TypeName>Sajan.IO.Parsers.XlsxParserConfig</TypeName>
+				<Version>
+					<Build>1</Build>
+					<Major>1</Major>
+					<Minor>0</Minor>
+					<StateString>release</StateString>
+				</Version>
+				<IgnoreEmptyCells>true</IgnoreEmptyCells>
+				<IncludeCommentsAsSegments>true</IncludeCommentsAsSegments>
+				<IncludeHiddenColumns>false</IncludeHiddenColumns>
+				<IncludeHiddenRows>false</IncludeHiddenRows>
+				<IncludeHiddenSheets>false</IncludeHiddenSheets>
+				<ParseDirection>ByColumn</ParseDirection>
+				<RangeIncludeExclude>Exclude</RangeIncludeExclude>
+				<Ranges xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+				<StartAtRow>1</StartAtRow>
+				<TranslateWorksheetNames>true</TranslateWorksheetNames>
+				<UseRangeIncludeExclude>false</UseRangeIncludeExclude>
+			</Configuration>
+			<ConfigurationID>7379</ConfigurationID>
+			<DeletePending>false</DeletePending>
+			<ID>7574</ID>
+			<LastUpdated>2023-11-08T11:09:40.06</LastUpdated>
+			<SequenceNumber>0</SequenceNumber>
+		</ParserChainElement>
+		<ParserChainElement>
+			<ChainID>1705</ChainID>
+			<Configuration i:type="ControlCharacterSanitizerConfig">
+				<AssociationID>00000000-0000-0000-0000-000000000000</AssociationID>
+				<ID>4131</ID>
+				<LastUpdated>2023-11-08T11:09:40.077</LastUpdated>
+				<Name>New ControlCharacterSanitizerConfig</Name>
+				<TypeName>Sajan.IO.Parsers.ControlCharacterSanitizerConfig</TypeName>
+				<Version>
+					<Build>1</Build>
+					<Major>0</Major>
+					<Minor>0</Minor>
+					<StateString>release</StateString>
+				</Version>
+				<RemoveControlCharacters>true</RemoveControlCharacters>
+			</Configuration>
+			<ConfigurationID>4131</ConfigurationID>
+			<DeletePending>false</DeletePending>
+			<ID>4384</ID>
+			<LastUpdated>2023-11-08T11:09:40.093</LastUpdated>
+			<SequenceNumber>1</SequenceNumber>
+		</ParserChainElement>
+		<ParserChainElement>
+			<ChainID>1705</ChainID>
+			<Configuration i:type="ExclusionParserConfig">
+				<AssociationID>00000000-0000-0000-0000-000000000000</AssociationID>
+				<ID>4133</ID>
+				<LastUpdated>2023-11-08T11:09:40.123</LastUpdated>
+				<Name>Exclude {#} and ({#})</Name>
+				<TypeName>Sajan.IO.Parsers.ExclusionParserConfig</TypeName>
+				<Version>
+					<Build>1</Build>
+					<Major>0</Major>
+					<Minor>0</Minor>
+					<StateString>release</StateString>
+				</Version>
+				<Exclusions>
+					<Exclusion>
+						<ContentType>squiggle-exclude</ContentType>
+						<FormatTagType>PlaceholderTag</FormatTagType>
+						<Pattern>\(?\{\d\}\)?</Pattern>
+					</Exclusion>
+					<Exclusion>
+						<ContentType>squiggle-blank</ContentType>
+						<FormatTagType>PlaceholderTag</FormatTagType>
+						<Pattern>\{\}</Pattern>
+					</Exclusion>
+					<Exclusion>
+						<ContentType>percent-variables</ContentType>
+						<FormatTagType>PlaceholderTag</FormatTagType>
+						<Pattern>\%[a-zA-Z0-9_]+\%</Pattern>
+					</Exclusion>
+					<Exclusion>
+						<ContentType>x-numericOnly</ContentType>
+						<FormatTagType>PlaceholderTag</FormatTagType>
+						<Pattern>^\d+$</Pattern>
+					</Exclusion>
+					<Exclusion>
+						<ContentType i:nil="true" />
+						<FormatTagType>PlaceholderTag</FormatTagType>
+						<Pattern>\{\w\}</Pattern>
+					</Exclusion>
+					<Exclusion>
+						<ContentType>x-cdata-start</ContentType>
+						<FormatTagType>PlaceholderTag</FormatTagType>
+						<Pattern>&lt;\!\[CDATA\[</Pattern>
+					</Exclusion>
+					<Exclusion>
+						<ContentType>x-cdata-end</ContentType>
+						<FormatTagType>PlaceholderTag</FormatTagType>
+						<Pattern>\]\]\&gt;</Pattern>
+					</Exclusion>
+				</Exclusions>
+			</Configuration>
+			<ConfigurationID>4133</ConfigurationID>
+			<DeletePending>false</DeletePending>
+			<ID>4386</ID>
+			<LastUpdated>2023-11-08T11:09:40.14</LastUpdated>
+			<SequenceNumber>2</SequenceNumber>
+		</ParserChainElement>
+		<ParserChainElement>
+			<ChainID>1705</ChainID>
+			<Configuration i:type="HTMLAwesomenessParserConfig">
+				<AssociationID>00000000-0000-0000-0000-000000000000</AssociationID>
+				<ID>5281</ID>
+				<LastUpdated>2023-11-08T11:09:40.153</LastUpdated>
+				<Name>New HTMLAwesomenessParserConfig</Name>
+				<TypeName>Sajan.IO.Parsers.HTMLAwesomenessParserConfig</TypeName>
+				<Version>
+					<Build>4</Build>
+					<Major>1</Major>
+					<Minor>0</Minor>
+					<StateString>release</StateString>
+				</Version>
+				<CleanHtmlEscapes>true</CleanHtmlEscapes>
+				<DoNotTranslateLeadingFragmentEndingWithGreaterThan>false</DoNotTranslateLeadingFragmentEndingWithGreaterThan>
+				<DoNotUseDirectlyInParserFiniteBlockElements xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:string>ABBR</d5p1:string>
+					<d5p1:string>ADDRESS</d5p1:string>
+					<d5p1:string>APPLET</d5p1:string>
+					<d5p1:string>ARTICLE</d5p1:string>
+					<d5p1:string>ASIDE</d5p1:string>
+					<d5p1:string>BDO</d5p1:string>
+					<d5p1:string>BLOCKQUOTE</d5p1:string>
+					<d5p1:string>BODY</d5p1:string>
+					<d5p1:string>BOUNDCOLUMN</d5p1:string>
+					<d5p1:string>BUTTON</d5p1:string>
+					<d5p1:string>BUTTON</d5p1:string>
+					<d5p1:string>BUTTONCOLUMN</d5p1:string>
+					<d5p1:string>CALENDAR</d5p1:string>
+					<d5p1:string>CAPTION</d5p1:string>
+					<d5p1:string>CENTER</d5p1:string>
+					<d5p1:string>CHECKBOX</d5p1:string>
+					<d5p1:string>COLGROUP</d5p1:string>
+					<d5p1:string>COMPAREVALIDATOR</d5p1:string>
+					<d5p1:string>CUSTOMVALIDATOR</d5p1:string>
+					<d5p1:string>DATAGRID</d5p1:string>
+					<d5p1:string>DD</d5p1:string>
+					<d5p1:string>DEL</d5p1:string>
+					<d5p1:string>DIR</d5p1:string>
+					<d5p1:string>DIV</d5p1:string>
+					<d5p1:string>DL</d5p1:string>
+					<d5p1:string>DT</d5p1:string>
+					<d5p1:string>EDITCOMMANDCOLUMN</d5p1:string>
+					<d5p1:string>FIELDSET</d5p1:string>
+					<d5p1:string>FOOTER</d5p1:string>
+					<d5p1:string>FORM</d5p1:string>
+					<d5p1:string>H1</d5p1:string>
+					<d5p1:string>H2</d5p1:string>
+					<d5p1:string>H3</d5p1:string>
+					<d5p1:string>H4</d5p1:string>
+					<d5p1:string>H5</d5p1:string>
+					<d5p1:string>H6</d5p1:string>
+					<d5p1:string>HEADER</d5p1:string>
+					<d5p1:string>HYPERLINKCOLUMN</d5p1:string>
+					<d5p1:string>INS</d5p1:string>
+					<d5p1:string>LABEL</d5p1:string>
+					<d5p1:string>LEGEND</d5p1:string>
+					<d5p1:string>LI</d5p1:string>
+					<d5p1:string>LINKBUTTON</d5p1:string>
+					<d5p1:string>LISTING</d5p1:string>
+					<d5p1:string>LISTITEM</d5p1:string>
+					<d5p1:string>MAP</d5p1:string>
+					<d5p1:string>NAV</d5p1:string>
+					<d5p1:string>NOFRAMES</d5p1:string>
+					<d5p1:string>NOSCRIPT</d5p1:string>
+					<d5p1:string>OBJECT</d5p1:string>
+					<d5p1:string>OL</d5p1:string>
+					<d5p1:string>OPTGROUP</d5p1:string>
+					<d5p1:string>OPTION</d5p1:string>
+					<d5p1:string>P</d5p1:string>
+					<d5p1:string>PRE</d5p1:string>
+					<d5p1:string>Q</d5p1:string>
+					<d5p1:string>RADIOBUTTON</d5p1:string>
+					<d5p1:string>RANGEVALIDATOR</d5p1:string>
+					<d5p1:string>REGULAREXPRESSIONVALIDATOR</d5p1:string>
+					<d5p1:string>REQUIREDFIELDVALIDATOR</d5p1:string>
+					<d5p1:string>SAMP</d5p1:string>
+					<d5p1:string>SECTION</d5p1:string>
+					<d5p1:string>SELECT</d5p1:string>
+					<d5p1:string>TABLE</d5p1:string>
+					<d5p1:string>TBODY</d5p1:string>
+					<d5p1:string>TD</d5p1:string>
+					<d5p1:string>TEMPLATECOLUMN</d5p1:string>
+					<d5p1:string>TEXTAREA</d5p1:string>
+					<d5p1:string>TEXTBOX</d5p1:string>
+					<d5p1:string>TFOOT</d5p1:string>
+					<d5p1:string>TH</d5p1:string>
+					<d5p1:string>THEAD</d5p1:string>
+					<d5p1:string>TITLE</d5p1:string>
+					<d5p1:string>TR</d5p1:string>
+					<d5p1:string>UL</d5p1:string>
+					<d5p1:string>XMP</d5p1:string>
+					<d5p1:string>SUMMARY</d5p1:string>
+					<d5p1:string>FIGURE</d5p1:string>
+					<d5p1:string>FIGCAPTION</d5p1:string>
+					<d5p1:string>DATA</d5p1:string>
+				</DoNotUseDirectlyInParserFiniteBlockElements>
+				<DoNotUseDirectlyInParserIgnoreContentInsideTag xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:string>SCRIPT</d5p1:string>
+					<d5p1:string>STYLE</d5p1:string>
+				</DoNotUseDirectlyInParserIgnoreContentInsideTag>
+				<DoNotUseDirectlyInParserTranslateableAttributes xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:string>A[@TITLE]</d5p1:string>
+					<d5p1:string>ABBR[@TITLE]</d5p1:string>
+					<d5p1:string>ADDRESS[@TITLE]</d5p1:string>
+					<d5p1:string>APPLET[@ALT]</d5p1:string>
+					<d5p1:string>APPLET[@TITLE]</d5p1:string>
+					<d5p1:string>BDO[@TITLE]</d5p1:string>
+					<d5p1:string>BLOCKQUOTE[@TITLE]</d5p1:string>
+					<d5p1:string>BODY[@TITLE]</d5p1:string>
+					<d5p1:string>BOUNDCOLUMN[@FOOTERTEXT]</d5p1:string>
+					<d5p1:string>BOUNDCOLUMN[@HEADERTEXT]</d5p1:string>
+					<d5p1:string>BUTTON[@TEXT]</d5p1:string>
+					<d5p1:string>BUTTON[@TITLE]</d5p1:string>
+					<d5p1:string>BUTTONCOLUMN[@FOOTERTEXT]</d5p1:string>
+					<d5p1:string>BUTTONCOLUMN[@HEADERTEXT]</d5p1:string>
+					<d5p1:string>BUTTONCOLUMN[@TEXT]</d5p1:string>
+					<d5p1:string>CALENDAR[@NEXTMONTHTEXT]</d5p1:string>
+					<d5p1:string>CALENDAR[@PREVMONTHTEXT]</d5p1:string>
+					<d5p1:string>CALENDAR[@SELECTMONTHTEXT]</d5p1:string>
+					<d5p1:string>CALENDAR[@SELECTWEEKTEXT]</d5p1:string>
+					<d5p1:string>CAPTION[@TITLE]</d5p1:string>
+					<d5p1:string>CENTER[@TITLE]</d5p1:string>
+					<d5p1:string>CHECKBOX[@TEXT]</d5p1:string>
+					<d5p1:string>COLGROUP[@TITLE]</d5p1:string>
+					<d5p1:string>COMPAREVALIDATOR[@ERRORMESSAGE]</d5p1:string>
+					<d5p1:string>COMPAREVALIDATOR[@TEXT]</d5p1:string>
+					<d5p1:string>CUSTOMVALIDATOR[@ERRORMESSAGE]</d5p1:string>
+					<d5p1:string>CUSTOMVALIDATOR[@TEXT]</d5p1:string>
+					<d5p1:string>DATAGRID[@PAGESTYLE-NEXTPAGETEXT]</d5p1:string>
+					<d5p1:string>DATAGRID[@PAGESTYLE-PREVPAGETEXT]</d5p1:string>
+					<d5p1:string>DD[@TITLE]</d5p1:string>
+					<d5p1:string>DEL[@TITLE]</d5p1:string>
+					<d5p1:string>DIR[@TITLE]</d5p1:string>
+					<d5p1:string>DIV[@TITLE]</d5p1:string>
+					<d5p1:string>DL[@TITLE]</d5p1:string>
+					<d5p1:string>DT[@TITLE]</d5p1:string>
+					<d5p1:string>EDITCOMMANDCOLUMN[@CANCELTEXT]</d5p1:string>
+					<d5p1:string>EDITCOMMANDCOLUMN[@EDITTEXT]</d5p1:string>
+					<d5p1:string>EDITCOMMANDCOLUMN[@FOOTERTEXT]</d5p1:string>
+					<d5p1:string>EDITCOMMANDCOLUMN[@HEADERTEXT]</d5p1:string>
+					<d5p1:string>EDITCOMMANDCOLUMN[@UPDATETEXT]</d5p1:string>
+					<d5p1:string>FIELDSET[@TITLE]</d5p1:string>
+					<d5p1:string>FORM[@TITLE]</d5p1:string>
+					<d5p1:string>HYPERLINKCOLUMN[@FOOTERTEXT]</d5p1:string>
+					<d5p1:string>HYPERLINKCOLUMN[@HEADERTEXT]</d5p1:string>
+					<d5p1:string>HYPERLINKCOLUMN[@TEXT]</d5p1:string>
+					<d5p1:string>IMG[@ALT]</d5p1:string>
+					<d5p1:string>IMG[@TITLE]</d5p1:string>
+					<d5p1:string>INPUT[@VALUE]</d5p1:string>
+					<d5p1:string>INS[@TITLE]</d5p1:string>
+					<d5p1:string>LABEL[@TITLE]</d5p1:string>
+					<d5p1:string>LEGEND[@TITLE]</d5p1:string>
+					<d5p1:string>LI[@TITLE]</d5p1:string>
+					<d5p1:string>LINK[@TITLE]</d5p1:string>
+					<d5p1:string>LINKBUTTON[@TEXT]</d5p1:string>
+					<d5p1:string>LISTING[@TITLE]</d5p1:string>
+					<d5p1:string>LISTITEM[@TEXT]</d5p1:string>
+					<d5p1:string>MAP[@TITLE]</d5p1:string>
+					<d5p1:string>NOFRAMES[@TITLE]</d5p1:string>
+					<d5p1:string>NOSCRIPT[@TITLE]</d5p1:string>
+					<d5p1:string>OBJECT[@TITLE]</d5p1:string>
+					<d5p1:string>OL[@TITLE]</d5p1:string>
+					<d5p1:string>OPTGROUP[@LABEL]</d5p1:string>
+					<d5p1:string>OPTGROUP[@TITLE]</d5p1:string>
+					<d5p1:string>OPTION[@TITLE]</d5p1:string>
+					<d5p1:string>P[@TITLE]</d5p1:string>
+					<d5p1:string>PRE[@TITLE]</d5p1:string>
+					<d5p1:string>Q[@TITLE]</d5p1:string>
+					<d5p1:string>RADIOBUTTON[@TEXT]</d5p1:string>
+					<d5p1:string>RANGEVALIDATOR[@ERRORMESSAGE]</d5p1:string>
+					<d5p1:string>RANGEVALIDATOR[@TEXT]</d5p1:string>
+					<d5p1:string>REGULAREXPRESSIONVALIDATOR[@ERRORMESSAGE]</d5p1:string>
+					<d5p1:string>REGULAREXPRESSIONVALIDATOR[@TEXT]</d5p1:string>
+					<d5p1:string>REQUIREDFIELDVALIDATOR[@ERRORMESSAGE]</d5p1:string>
+					<d5p1:string>REQUIREDFIELDVALIDATOR[@TEXT]</d5p1:string>
+					<d5p1:string>SAMP[@TITLE]</d5p1:string>
+					<d5p1:string>SELECT[@TITLE]</d5p1:string>
+					<d5p1:string>TABLE[@TITLE]</d5p1:string>
+					<d5p1:string>TBODY[@TITLE]</d5p1:string>
+					<d5p1:string>TD[@TITLE]</d5p1:string>
+					<d5p1:string>TEMPLATECOLUMN[@FOOTERTEXT]</d5p1:string>
+					<d5p1:string>TEMPLATECOLUMN[@HEADERTEXT]</d5p1:string>
+					<d5p1:string>TEXTAREA[@TITLE]</d5p1:string>
+					<d5p1:string>TEXTBOX[@TEXT]</d5p1:string>
+					<d5p1:string>TFOOT[@TITLE]</d5p1:string>
+					<d5p1:string>TH[@TITLE]</d5p1:string>
+					<d5p1:string>THEAD[@TITLE]</d5p1:string>
+					<d5p1:string>TR[@TITLE]</d5p1:string>
+					<d5p1:string>UL[@TITLE]</d5p1:string>
+					<d5p1:string>XMP[@TITLE]</d5p1:string>
+					<d5p1:string>INPUT[@PLACEHOLDER]</d5p1:string>
+					<d5p1:string>MENU[@LABEL]</d5p1:string>
+					<d5p1:string>MENUITEM[@LABEL]</d5p1:string>
+				</DoNotUseDirectlyInParserTranslateableAttributes>
+				<HandleEntitiesInAttributes>true</HandleEntitiesInAttributes>
+				<HandleEntitiesInText>false</HandleEntitiesInText>
+				<TranslateCdata>false</TranslateCdata>
+				<TranslateComments>false</TranslateComments>
+				<WhitespaceHandling>Preserve</WhitespaceHandling>
+			</Configuration>
+			<ConfigurationID>5281</ConfigurationID>
+			<DeletePending>false</DeletePending>
+			<ID>5534</ID>
+			<LastUpdated>2023-11-08T11:09:40.187</LastUpdated>
+			<SequenceNumber>3</SequenceNumber>
+		</ParserChainElement>
+		<ParserChainElement>
+			<ChainID>1705</ChainID>
+			<Configuration i:type="SRXParserConfig">
+				<AssociationID>00000000-0000-0000-0000-000000000000</AssociationID>
+				<ID>5290</ID>
+				<LastUpdated>2023-11-08T11:09:40.2</LastUpdated>
+				<Name>SRX en-US Default</Name>
+				<TypeName>Sajan.IO.Parsers.SRXParserConfig</TypeName>
+				<Version>
+					<Build>1</Build>
+					<Major>0</Major>
+					<Minor>0</Minor>
+					<StateString>release</StateString>
+				</Version>
+				<SRXDocument xmlns:d5p1="http://schemas.datacontract.org/2004/07/Sajan.IO.SRX">
+					<d5p1:Body>
+						<d5p1:LanguageRules>
+							<d5p1:LanguageRule>
+								<d5p1:Name>English</d5p1:Name>
+								<d5p1:Pattern i:nil="true" />
+								<d5p1:Rules>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Aa]bs\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Aa]bstr\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bAdd\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bapp\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bappr\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Aa]pprox\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Aa]pr\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Aa]tm\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Aa]ug\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Bb]ill\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Bb]n\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Bb]ull\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[B]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[O]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[B]\. &amp; [O]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Cc]a\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Cc]alc\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Cc]apt\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bCdn\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bcert\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bC[Ff]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bCh\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Cc]hap\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bcirc\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Cc]oeff\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Cc]ol\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bCom\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Cc]onc\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Cc]ond\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bD\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Dd]ec\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Dd]eriv\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Dd]ia\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Dd]iam\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Dd]in\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Dd]ir\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bDiv\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bdoc\.com\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Dd]ocs\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Dd]ott\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Dd]r\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ee]\.g\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\beg\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ee]sp\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ee]st\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bestim\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ee]xc\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ee]xcl\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ff]eb\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ff]ed\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bF[Ii][Gg]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bFIGS\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ff]ri\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Gg]ovt\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ii]\.e\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bie\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ii]nc\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ii]ncl\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ii]nd\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ii]ng\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bINT\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Jj]an\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bJul\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bJun\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bLtd\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]ar\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]ax\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]essrs\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]fg\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]gr\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]ill\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]isc\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]M\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]on\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bM[Rr]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bM[Rr][Ss]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]s\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Mm]t\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Nn]eg\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bN[Oo]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Nn]os\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Nn]ov\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bN°\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Oo]\.J\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bObj\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Oo]ct\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bpag\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Pp]ar\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Pp]ara\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Pp]os\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s[Bb]ox</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Pp]\.\s?[Oo]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Pp]p\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Pp]rep\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Pp]rof\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bPte\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bPvt\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Rr]ec\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Rr]ef\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Rr]eg\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Rr]es\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Rr]esp\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Rr]ev\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ss]at\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ss]ep\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ss]ept\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bsp\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bspp\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ss]q\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ss]t\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ss][Tt]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ss]ta\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ss]un\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ss]uppl\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Tt]el\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Tt]emp\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Tt]hu\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Tt]hur\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Tt]hurs\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Tt]ue\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Tt]ues\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Uu]niv\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bU\.[KS]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Uu]til\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Vv]iz\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\bvs\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ww]ed\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+								</d5p1:Rules>
+							</d5p1:LanguageRule>
+							<d5p1:LanguageRule>
+								<d5p1:Name>default</d5p1:Name>
+								<d5p1:Pattern i:nil="true" />
+								<d5p1:Rules>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s+[A-Z]</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\w\s+[A-Z]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s+[a-zƒšœžßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ]</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>[\.\?!]+["'”\)]?</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak></d5p1:AfterBreak>
+										<d5p1:BeforeBreak>[\(\[\{][\.\?!][\)\]\}]</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>(\s|\xA0)[0-9\[\(]+</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b\S{1,4}\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>(\s|\xA0)[A-Z]{1,2}\d</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b\S{1,4}\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b[Ee][Tt][Cc]\.</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s+\{\d\}</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\b:</d5p1:BeforeBreak>
+										<d5p1:Break>No</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>[\.\?!]+</d5p1:BeforeBreak>
+										<d5p1:Break>Yes</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\S:+["'”\)]?</d5p1:BeforeBreak>
+										<d5p1:Break>Yes</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak></d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\u2029</d5p1:BeforeBreak>
+										<d5p1:Break>Yes</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak>\s</d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\S[\.\?!]+["'”\)]?</d5p1:BeforeBreak>
+										<d5p1:Break>Yes</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak></d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\S\t+</d5p1:BeforeBreak>
+										<d5p1:Break>Yes</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+									<d5p1:Rule>
+										<d5p1:AfterBreak></d5p1:AfterBreak>
+										<d5p1:BeforeBreak>\n</d5p1:BeforeBreak>
+										<d5p1:Break>Yes</d5p1:Break>
+										<d5p1:Name>New Rule</d5p1:Name>
+									</d5p1:Rule>
+								</d5p1:Rules>
+							</d5p1:LanguageRule>
+						</d5p1:LanguageRules>
+						<d5p1:MapRules>
+							<d5p1:LanguageMap>
+								<d5p1:Name>default</d5p1:Name>
+								<d5p1:Pattern>.*</d5p1:Pattern>
+							</d5p1:LanguageMap>
+							<d5p1:LanguageMap>
+								<d5p1:Name>English</d5p1:Name>
+								<d5p1:Pattern>en.*</d5p1:Pattern>
+							</d5p1:LanguageMap>
+						</d5p1:MapRules>
+					</d5p1:Body>
+					<d5p1:Header>
+						<d5p1:Cascade>Yes</d5p1:Cascade>
+						<d5p1:Options xmlns:d7p1="http://schemas.datacontract.org/2004/07/Sajan.IO.SRX.Okapi">
+							<d7p1:TrimLeadingWhitespaces>Yes</d7p1:TrimLeadingWhitespaces>
+							<d7p1:TrimTrailingWhitespaces>Yes</d7p1:TrimTrailingWhitespaces>
+						</d5p1:Options>
+						<d5p1:SegmentSubflows>Yes</d5p1:SegmentSubflows>
+					</d5p1:Header>
+					<d5p1:Version>2.0</d5p1:Version>
+				</SRXDocument>
+				<SrxText>&lt;srx xmlns:okpsrx="http://okapi.sf.net/srx-extensions" version="2.0" xmlns="http://www.lisa.org/srx20"&gt;
+  &lt;header cascade="yes" segmentsubflows="yes"&gt;
+    &lt;okpsrx:options trimLeadingWhitespaces="yes" trimTrailingWhitespaces="yes" /&gt;
+  &lt;/header&gt;
+  &lt;body&gt;
+    &lt;languagerules&gt;
+      &lt;languagerule languagerulename="English"&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Aa]bs\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Aa]bstr\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bAdd\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bapp\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bappr\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Aa]pprox\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Aa]pr\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Aa]tm\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Aa]ug\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Bb]ill\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Bb]n\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Bb]ull\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[B]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[O]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[B]\. &amp;amp; [O]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Cc]a\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Cc]alc\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Cc]apt\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bCdn\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bcert\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bC[Ff]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bCh\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Cc]hap\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bcirc\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Cc]oeff\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Cc]ol\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bCom\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Cc]onc\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Cc]ond\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bD\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Dd]ec\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Dd]eriv\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Dd]ia\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Dd]iam\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Dd]in\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Dd]ir\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bDiv\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bdoc\.com\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Dd]ocs\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Dd]ott\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Dd]r\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ee]\.g\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\beg\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ee]sp\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ee]st\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bestim\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ee]xc\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ee]xcl\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ff]eb\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ff]ed\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bF[Ii][Gg]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bFIGS\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ff]ri\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Gg]ovt\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ii]\.e\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bie\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ii]nc\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ii]ncl\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ii]nd\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ii]ng\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bINT\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Jj]an\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bJul\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bJun\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bLtd\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]ar\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]ax\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]essrs\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]fg\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]gr\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]ill\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]isc\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]M\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]on\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bM[Rr]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bM[Rr][Ss]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]s\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Mm]t\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Nn]eg\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bN[Oo]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Nn]os\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Nn]ov\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bN°\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Oo]\.J\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bObj\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Oo]ct\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bpag\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Pp]ar\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Pp]ara\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Pp]os\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Pp]\.\s?[Oo]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s[Bb]ox&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Pp]p\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Pp]rep\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Pp]rof\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bPte\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bPvt\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Rr]ec\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Rr]ef\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Rr]eg\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Rr]es\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Rr]esp\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Rr]ev\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ss]at\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ss]ep\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ss]ept\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bsp\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bspp\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ss]q\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ss]t\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ss][Tt]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ss]ta\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ss]un\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ss]uppl\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Tt]el\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Tt]emp\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Tt]hu\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Tt]hur\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Tt]hurs\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Tt]ue\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Tt]ues\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Uu]niv\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bU\.[KS]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Uu]til\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Vv]iz\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\bvs\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ww]ed\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+      &lt;/languagerule&gt;
+      &lt;languagerule languagerulename="default"&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\w\s+[A-Z]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s+[A-Z]&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;[\.\?!]+["'”\)]?&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s+[a-zƒšœžßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ]&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;[\(\[\{][\.\?!][\)\]\}]&lt;/beforebreak&gt;
+          &lt;afterbreak /&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b\S{1,4}\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;(\s|\xA0)[0-9\[\(]+&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b\S{1,4}\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;(\s|\xA0)[A-Z]{1,2}\d&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b[Ee][Tt][Cc]\.&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="no"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\b:&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s+\{\d\}&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="yes"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;[\.\?!]+&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="yes"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\S:+["'”\)]?&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="yes"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\u2029&lt;/beforebreak&gt;
+          &lt;afterbreak /&gt;
+        &lt;/rule&gt;
+        &lt;rule break="yes"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\S[\.\?!]+["'”\)]?&lt;/beforebreak&gt;
+          &lt;afterbreak&gt;\s&lt;/afterbreak&gt;
+        &lt;/rule&gt;
+        &lt;rule break="yes"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\S\t+&lt;/beforebreak&gt;
+          &lt;afterbreak /&gt;
+        &lt;/rule&gt;
+        &lt;rule break="yes"&gt;
+          &lt;name&gt;New Rule&lt;/name&gt;
+          &lt;beforebreak&gt;\n&lt;/beforebreak&gt;
+          &lt;afterbreak /&gt;
+        &lt;/rule&gt;
+      &lt;/languagerule&gt;
+    &lt;/languagerules&gt;
+    &lt;maprules&gt;
+      &lt;languagemap languagerulename="default" languagepattern=".*" /&gt;
+      &lt;languagemap languagerulename="English" languagepattern="en.*" /&gt;
+    &lt;/maprules&gt;
+  &lt;/body&gt;
+&lt;/srx&gt;</SrxText>
+			</Configuration>
+			<ConfigurationID>5290</ConfigurationID>
+			<DeletePending>false</DeletePending>
+			<ID>5543</ID>
+			<LastUpdated>2023-11-08T11:09:40.233</LastUpdated>
+			<SequenceNumber>4</SequenceNumber>
+		</ParserChainElement>
+		<ParserChainElement>
+			<ChainID>1705</ChainID>
+			<Configuration i:type="ChameleonParserConfig">
+				<AssociationID>00000000-0000-0000-0000-000000000000</AssociationID>
+				<ID>4446</ID>
+				<LastUpdated>2023-11-08T11:09:40.247</LastUpdated>
+				<Name>Fix &amp;160; at Reconstruct</Name>
+				<TypeName>Sajan.IO.Parsers.ChameleonParserConfig</TypeName>
+				<Version>
+					<Build>1</Build>
+					<Major>1</Major>
+					<Minor>0</Minor>
+					<StateString>release</StateString>
+				</Version>
+				<ReplacementsForParsing />
+				<ReplacementsForReconstruct>
+					<ChameleonReplacement>
+						<IsIgnoreCase>false</IsIgnoreCase>
+						<IsMultiline>false</IsMultiline>
+						<Regex>&amp;#(xA1|160);</Regex>
+						<Replacement> </Replacement>
+					</ChameleonReplacement>
+				</ReplacementsForReconstruct>
+			</Configuration>
+			<ConfigurationID>4446</ConfigurationID>
+			<DeletePending>false</DeletePending>
+			<ID>4699</ID>
+			<LastUpdated>2023-11-08T11:09:40.28</LastUpdated>
+			<SequenceNumber>5</SequenceNumber>
+		</ParserChainElement>
+		<ParserChainElement>
+			<ChainID>1705</ChainID>
+			<Configuration i:type="TagDeforesterConfig">
+				<AssociationID>00000000-0000-0000-0000-000000000000</AssociationID>
+				<ID>4572</ID>
+				<LastUpdated>2023-11-08T11:09:40.293</LastUpdated>
+				<Name>New TagDeforesterConfig</Name>
+				<TypeName>Sajan.IO.Parsers.TagDeforesterConfig</TypeName>
+				<Version>
+					<Build>1</Build>
+					<Major>0</Major>
+					<Minor>0</Minor>
+					<StateString>release</StateString>
+				</Version>
+				<CompressTags>false</CompressTags>
+				<ExcludableCtypes xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<d5p1:string>squiggle-exclude</d5p1:string>
+					<d5p1:string>x-html-org</d5p1:string>
+				</ExcludableCtypes>
+			</Configuration>
+			<ConfigurationID>4572</ConfigurationID>
+			<DeletePending>false</DeletePending>
+			<ID>4825</ID>
+			<LastUpdated>2023-11-08T11:09:40.327</LastUpdated>
+			<SequenceNumber>6</SequenceNumber>
+		</ParserChainElement>
+		<ParserChainElement>
+			<ChainID>1705</ChainID>
+			<Configuration i:type="WhitespaceTrimmerConfig">
+				<AssociationID>00000000-0000-0000-0000-000000000000</AssociationID>
+				<ID>5282</ID>
+				<LastUpdated>2023-11-08T11:09:40.357</LastUpdated>
+				<Name>New WhitespaceTrimmerConfig</Name>
+				<TypeName>Sajan.IO.Parsers.WhitespaceTrimmerConfig</TypeName>
+				<Version>
+					<Build>1</Build>
+					<Major>0</Major>
+					<Minor>0</Minor>
+					<StateString>release</StateString>
+				</Version>
+				<TrimLeadingWhitespace>true</TrimLeadingWhitespace>
+				<TrimTrailingWhitespace>true</TrimTrailingWhitespace>
+			</Configuration>
+			<ConfigurationID>5282</ConfigurationID>
+			<DeletePending>false</DeletePending>
+			<ID>5535</ID>
+			<LastUpdated>2023-11-08T11:09:40.357</LastUpdated>
+			<SequenceNumber>7</SequenceNumber>
+		</ParserChainElement>
+	</Elements>
+	<ID>1705</ID>
+	<IsActive>true</IsActive>
+	<IsChanged>false</IsChanged>
+	<IsDeleted>false</IsDeleted>
+	<LastUpdated>2023-11-08T11:09:40.03</LastUpdated>
+	<LegacyID i:nil="true" />
+	<Name>Excel Config with HTML</Name>
+	<OverwriteOnReconstruct>false</OverwriteOnReconstruct>
+	<ReconstructFilenameTemplate>{sajanTargetLang}_{filename}.{extension}</ReconstructFilenameTemplate>
+	<SharesConfig>false</SharesConfig>
+	<UpdatedBy>tshuppert1</UpdatedBy>
+	<UsePreIoParsers>false</UsePreIoParsers>
+</ParserChain>
