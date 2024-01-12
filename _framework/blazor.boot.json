@@ -1,7 +1,7 @@
 {
   "entryAssembly": "MyNewApp",
   "resources": {
-    "hash": "sha256-rBvc90/+Fsa+qFmkTEamOG65zUmRDyJ6i51rZL4zeoM=",
+    "hash": "sha256-cUQS/qJwt4cF8kIetawPRdm9OCAqfsFJw8K13TnRXVw=",
     "runtime": {
       "dotnet.6.0.25.1u5p60sx5s.js": "sha256-1jUGCCSGH9JWhkqbHdQk8JBjBI8K/VC63En5zlypVps=",
       "dotnet.timezones.blat": "sha256-KsGUR9nqtXb3Hy6IrNlnc1HoSS+AFlsXTX9rq4oChtA=",
@@ -29,8 +29,8 @@
       "Microsoft.Extensions.Primitives.dll": "sha256-QRewYnpJ6vl8gGMXBS2gN++/sQ9hKcuv+rhy586Bbxs=",
       "Microsoft.JSInterop.dll": "sha256-V9Y1rDy7IWkkyg1CzmXMOJU1igy715LSNZ9lytlUnkw=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-dVsZnuFJzTERXx8UgcTgyfZNsc1/bp6WwC0EazZznj0=",
-      "MudBlazor.dll": "sha256-7GkzLNqdvxQ/l94xfbubj2k2wMv7hK+Ze37Hr0wGeIg=",
-      "MyNewApp.dll": "sha256-b/wJEU+/FD2la6FKCoXr+/EnJ/nUOiTQhvzC357v1NM=",
+      "MudBlazor.dll": "sha256-sgrKzaRgVZgr0/fCMz+AYvg3l57i1SLb3+bsrfRA7PU=",
+      "MyNewApp.dll": "sha256-m06fnchYMSzuLIMN5CkPtyQd8vYqlwNLUK3oVpOb1bw=",
       "System.Collections.Concurrent.dll": "sha256-ZoFXceYrKSW9XDFBnd0q+MC6RB1mLMXDR6fWAlIbC1Y=",
       "System.Collections.dll": "sha256-vQVEp8GwH+AySLm6+ilEHk9VvLD0CUWLWWWNWBzkrj4=",
       "System.ComponentModel.Annotations.dll": "sha256-E0YW2IX58HJXhZcpOfLuTIFK+KT4yIpNTHD9MdF6iOo=",
